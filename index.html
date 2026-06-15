@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080607" />
+  <meta name="description" content="Acesso gratuito ao grupo do expert em slots." />
+  <title>Comunidade Expert em Slots</title>
+  <style>
+    :root {
+      --bg: #070607;
+      --text: #ffffff;
+      --gold: #ffbd21;
+      --gold-2: #ff9408;
+      --red: #ef263b;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .top-strip {
+      position: relative;
+      z-index: 20;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(3,3,3,.96);
+      white-space: nowrap;
+    }
+
+    .top-strip__track {
+      display: inline-flex;
+      min-width: max-content;
+      gap: 34px;
+      padding: 11px 0;
+      animation: ticker 24s linear infinite;
+      color: #f4f0f1;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .top-strip__track span::after {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-left: 34px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px var(--gold);
+      vertical-align: middle;
+    }
+
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 40px);
+      display: grid;
+      align-items: center;
+      isolation: isolate;
+      overflow: hidden;
+      background-image:
+        linear-gradient(90deg, rgba(4,3,4,.9) 0%, rgba(4,3,4,.62) 42%, rgba(4,3,4,.08) 72%, rgba(4,3,4,.12) 100%),
+        linear-gradient(0deg, rgba(7,6,7,.98) 0%, transparent 20%),
+        url("https://receitasdavovo.blog/wp-content/uploads/2026/06/ChatGPT-Image-15-de-jun.-de-2026_-00_18_17-_1_.webp");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .hero__content {
+      width: min(690px, 61vw);
+      padding: 58px 0 72px;
+    }
+
+    .urgency {
+      width: min(100%, 590px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      background: linear-gradient(180deg, #f52e43, #cb172a);
+      box-shadow: 0 12px 38px rgba(239,38,59,.25);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: clamp(13px, 1.2vw, 16px);
+      font-weight: 950;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 670px;
+      margin: 0 0 20px;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(46px, 5.6vw, 82px);
+      line-height: .94;
+      letter-spacing: -.025em;
+      text-transform: uppercase;
+      text-shadow: 0 8px 40px rgba(0,0,0,.65);
+    }
+
+    h1 .accent {
+      display: inline-block;
+      color: var(--gold);
+      text-shadow: 0 0 28px rgba(255,189,33,.2);
+    }
+
+    .hero__lead {
+      max-width: 620px;
+      margin: 0 0 28px;
+      color: #f0ebed;
+      font-size: clamp(17px, 1.55vw, 21px);
+      font-weight: 650;
+      line-height: 1.5;
+      text-shadow: 0 3px 18px rgba(0,0,0,.75);
+    }
+
+    .cta-wrap { width: min(100%, 590px); }
+
+    .cta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 68px;
+      padding: 16px 24px;
+      border-radius: 13px;
+      color: #100b03;
+      background: linear-gradient(180deg, #ffc83e, #ff9f0d);
+      box-shadow: 0 18px 42px rgba(255,157,0,.25), inset 0 1px rgba(255,255,255,.45);
+      font-size: clamp(16px, 1.7vw, 21px);
+      font-weight: 1000;
+      letter-spacing: .04em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: transform .2s ease, filter .2s ease, box-shadow .2s ease, letter-spacing .2s ease;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -35%;
+      width: 28%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.48), transparent);
+      transform: skewX(-22deg);
+      animation: shine 2.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.01);
+      filter: brightness(1.06);
+      letter-spacing: .055em;
+      box-shadow: 0 22px 50px rgba(255,157,0,.36);
+    }
+
+    .cta:active {
+      transform: translateY(1px) scale(.992);
+    }
+
+    .cta svg {
+      transition: transform .2s ease;
+    }
+
+    .cta:hover svg {
+      transform: scale(1.06) rotate(-6deg);
+    }
+
+    @keyframes pulse {
+      50% { box-shadow: 0 18px 52px rgba(255,157,0,.42), inset 0 1px rgba(255,255,255,.45); }
+    }
+
+    @keyframes shine {
+      0% { left: -38%; opacity: 0; }
+      18% { opacity: .9; }
+      45% { left: 118%; opacity: 0; }
+      100% { left: 118%; opacity: 0; }
+    }
+
+    .cta svg { flex: 0 0 auto; }
+
+    .microcopy {
+      margin: 12px 0 0;
+      color: #c7c0c2;
+      font-size: 13px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .microcopy strong { color: var(--gold); }
+
+    .legal {
+      width: min(100%, 590px);
+      margin-top: 22px;
+      color: rgba(255,255,255,.5);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      line-height: 1.5;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .social-proof {
+      position: fixed;
+      left: 22px;
+      bottom: 22px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(360px, calc(100vw - 36px));
+      padding: 14px 16px;
+      border: 1px solid rgba(255,189,33,.18);
+      border-radius: 15px;
+      background: rgba(10,8,9,.93);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      backdrop-filter: blur(12px);
+      transform: translateY(140%);
+      opacity: 0;
+      transition: .45s ease;
+    }
+
+    .social-proof.show { transform: translateY(0); opacity: 1; }
+
+    .social-proof__avatar {
+      display: grid;
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 50%;
+      color: #151005;
+      background: var(--gold);
+      font-weight: 1000;
+    }
+
+    .social-proof strong { display: block; font-size: 14px; }
+    .social-proof small { color: #9f979a; }
+
+    @media (max-width: 920px) {
+      .hero {
+        min-height: calc(100svh - 36px);
+        align-items: end;
+        background-image:
+          radial-gradient(circle at 72% 24%, rgba(255,190,60,.28) 0%, rgba(255,190,60,.12) 18%, transparent 40%),
+          linear-gradient(180deg, rgba(4,3,4,.02) 0%, rgba(4,3,4,.14) 26%, rgba(4,3,4,.75) 58%, #070607 100%),
+          url("https://receitasdavovo.blog/wp-content/uploads/2026/06/ChatGPT-Image-15-de-jun.-de-2026_-00_37_02.webp");
+        background-size: auto, auto, 122%;
+        background-repeat: no-repeat;
+        background-position: center, center, 68% top;
+      }
+
+      .hero__content {
+        width: 100%;
+        max-width: 680px;
+        margin-inline: auto;
+        padding: 43svh 0 34px;
+        text-align: center;
+      }
+
+      .urgency, .cta-wrap, .hero__lead, .legal { margin-inline: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .top-strip__track { padding: 9px 0; font-size: 9px; gap: 24px; }
+      .top-strip__track span::after { margin-left: 24px; }
+      .hero {
+        min-height: calc(100svh - 32px);
+        background-size: auto, auto, 140%;
+        background-position: center, center, 66% top;
+      }
+      .hero__content { padding-top: 43svh; padding-bottom: 24px; }
+      .urgency { margin-bottom: 18px; padding: 11px 10px; font-size: 10px; }
+      .eyebrow { margin-bottom: 10px; font-size: 11px; letter-spacing: .17em; }
+      h1 { margin-bottom: 15px; font-size: clamp(39px, 12vw, 58px); }
+      .hero__lead { margin-bottom: 20px; font-size: 16px; line-height: 1.42; }
+      .cta { min-height: 58px; padding: 14px 16px; font-size: 15px; }
+      .microcopy { font-size: 12px; }
+      .legal { margin-top: 15px; font-size: 8px; }
+      .social-proof { left: 12px; bottom: 12px; width: calc(100vw - 24px); }
+    }
+
+
+    @media (max-width: 480px) {
+      .hero {
+        background-size: auto, auto, 156%;
+        background-position: center, center, 70% top;
+      }
+
+      .hero__content {
+        padding-top: 46svh;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip" aria-hidden="true">
+    <div class="top-strip__track">
+      <span>Bancas exclusivas</span><span>Melhores jogos</span><span>Horários pagantes</span><span>Grupo gratuito</span><span>Conteúdo diário</span>
+      <span>Bancas exclusivas</span><span>Melhores jogos</span><span>Horários pagantes</span><span>Grupo gratuito</span><span>Conteúdo diário</span>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero__content">
+          <div class="urgency">
+            <span aria-hidden="true">◷</span>
+            Sua vaga gratuita expira em <span id="countdown">04:59</span>
+          </div>
+
+          <p class="eyebrow">Você ganhou acesso grátis ao meu grupo</p>
+
+          <h1>
+            Você vai se divertir e lucrar junto comigo
+            <span class="accent">nos slots</span>
+          </h1>
+
+          <p class="hero__lead">
+            Entre no meu grupo, concorra a <strong>bancas exclusivas</strong> e tenha acesso aos <strong>melhores jogos e horários pagantes.</strong>
+          </p>
+
+          <div class="cta-wrap">
+            <a class="cta js-cta" href="#" rel="noopener">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20.5 11.7a8.5 8.5 0 0 1-12.62 7.42L3 20.4l1.31-4.73A8.5 8.5 0 1 1 20.5 11.7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.1 8.2c.15-.34.31-.35.55-.36h.47c.14 0 .33.05.42.27.1.22.64 1.56.7 1.68.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.49.14.24.61 1 1.31 1.62.9.8 1.66 1.05 1.9 1.17.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.14 1.13-.2.55-1.16 1.06-1.6 1.13-.41.07-.94.1-1.51-.08-.35-.11-.8-.26-1.38-.51-.24-.1-2.22-.82-3.77-2.83-1.31-1.69-1.3-2.71-1.16-3.15.14-.44.78-1.45 1.03-1.75Z" fill="currentColor"/>
+              </svg>
+              Entrar no grupo agora
+            </a>
+            <p class="microcopy">Liberei o acesso para as <strong>primeiras pessoas que entrarem hoje.</strong></p>
+          </div>
+
+          <p class="legal">Exclusivo para maiores de 18 anos. Jogue com responsabilidade.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="social-proof" id="socialProof" aria-live="polite">
+    <div class="social-proof__avatar" id="proofAvatar">A</div>
+    <div>
+      <strong id="proofText">Amanda entrou para o grupo</strong>
+      <small id="proofTime">há poucos minutos</small>
+    </div>
+  </div>
+
+  <script>
+    // Substitua pelo link real do WhatsApp, Telegram ou página de cadastro.
+    const DESTINATION_URL = "https://devzapp.com.br/api-engennier/campanha/api/redirect/6a15a0d883dc5b000147f4b6";
+
+    document.querySelectorAll('.js-cta').forEach(link => {
+      link.href = DESTINATION_URL;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
+
+    let seconds = 5 * 60 - 1;
+    const countdown = document.getElementById('countdown');
+
+    setInterval(() => {
+      if (seconds <= 0) seconds = 5 * 60 - 1;
+      const min = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const sec = String(seconds % 60).padStart(2, '0');
+      countdown.textContent = `${min}:${sec}`;
+      seconds--;
+    }, 1000);
+
+    const proofs = [
+      ['Amanda', 'entrou para o grupo', 'há 5 minutos'],
+      ['Lucas', 'garantiu o acesso gratuito', 'há 8 minutos'],
+      ['Rafael', 'acabou de entrar no grupo', 'agora há pouco'],
+      ['Camila', 'garantiu a vaga no grupo', 'há 12 minutos'],
+      ['Bruno', 'entrou para acompanhar os jogos', 'há 3 minutos']
+    ];
+
+    const proofBox = document.getElementById('socialProof');
+    const proofAvatar = document.getElementById('proofAvatar');
+    const proofText = document.getElementById('proofText');
+    const proofTime = document.getElementById('proofTime');
+    let proofIndex = 0;
+
+    function showProof() {
+      const [name, action, time] = proofs[proofIndex % proofs.length];
+      proofAvatar.textContent = name.charAt(0);
+      proofText.textContent = `${name} ${action}`;
+      proofTime.textContent = time;
+      proofBox.classList.add('show');
+      setTimeout(() => proofBox.classList.remove('show'), 5200);
+      proofIndex++;
+    }
+
+    setTimeout(showProof, 2200);
+    setInterval(showProof, 9000);
+  </script>
+</body>
+</html>
