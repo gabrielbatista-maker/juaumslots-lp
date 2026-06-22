@@ -320,16 +320,12 @@
       .social-proof { left: 12px; bottom: 12px; width: calc(100vw - 24px); }
     }
 
-
     @media (max-width: 480px) {
       .hero {
         background-size: auto, auto, 156%;
         background-position: center, center, 70% top;
       }
-
-      .hero__content {
-        padding-top: 46svh;
-      }
+      .hero__content { padding-top: 46svh; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -340,7 +336,23 @@
       }
     }
   </style>
-</head>
+
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}
+  window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1663099311618578');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1663099311618578&ev=PageView&noscript=1"
+  /></noscript>
+  </head>
 <body>
   <div class="top-strip" aria-hidden="true">
     <div class="top-strip__track">
@@ -370,9 +382,9 @@
           </p>
 
           <div class="cta-wrap">
-            <a class="cta js-cta" href="#" rel="noopener">
+            <a class="cta cta-button js-cta" href="#">
               <svg width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M20.5 11.7a8.5 8.5 0 0 1-12.62 7.42L3 20.4l1.31-4.73A8.5 8.5 0 1 1 20.5 11.7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20.5 11.7a8.5 8.5 0 0 1-12.62 7.42L3 20.4l1.33-4.73A8.5 8.5 0 1 1 20.5 11.7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.1 8.2c.15-.34.31-.35.55-.36h.47c.14 0 .33.05.42.27.1.22.64 1.56.7 1.68.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.49.14.24.61 1 1.31 1.62.9.8 1.66 1.05 1.9 1.17.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.14 1.13-.2.55-1.16 1.06-1.6 1.13-.41.07-.94.1-1.51-.08-.35-.11-.8-.26-1.38-.51-.24-.1-2.22-.82-3.77-2.83-1.31-1.69-1.3-2.71-1.16-3.15.14-.44.78-1.45 1.03-1.75Z" fill="currentColor"/>
               </svg>
               Entrar no grupo agora
@@ -395,15 +407,7 @@
   </div>
 
   <script>
-    // Substitua pelo link real do WhatsApp, Telegram ou página de cadastro.
-    const DESTINATION_URL = "https://devzapp.com.br/api-engennier/campanha/api/redirect/6a15a0d883dc5b000147f4b6";
-
-    document.querySelectorAll('.js-cta').forEach(link => {
-      link.href = DESTINATION_URL;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-    });
-
+    // --- CRONÔMETRO DE URGÊNCIA ---
     let seconds = 5 * 60 - 1;
     const countdown = document.getElementById('countdown');
 
@@ -415,6 +419,7 @@
       seconds--;
     }, 1000);
 
+    // --- PROVA SOCIAL DINÂMICA ---
     const proofs = [
       ['Amanda', 'entrou para o grupo', 'há 5 minutos'],
       ['Lucas', 'garantiu o acesso gratuito', 'há 8 minutos'],
@@ -441,6 +446,71 @@
 
     setTimeout(showProof, 2200);
     setInterval(showProof, 9000);
+
+    // --- ENGENHARIA DE RASTREIO INVISÍVEL COPIADO DA PLANILHA ---
+    (function() {
+      // Configurações do Expert de Slots
+      var DEVZAPP_URL = 'https://devzapp.com.br/api-engennier/campanha/api/redirect/6a15a0d883dc5b000147f4b6';
+      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsq3_O8Qduk0dPcNz8fB4jJpVv4AUb636o2f551cEA_hYqqjqT8RoHxsSoeWOd_9ct/exec';
+      
+      var userIP = '0.0.0.0';
+
+      // 1. Captura antecipada de IP real para CAPI
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json())
+        .then(data => { userIP = data.ip; })
+        .catch(() => {});
+
+      function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : '';
+      }
+
+      // 2. Função de disparo unificado (Navegador -> Buffer Planilha -> Devzapp)
+      function dispararEIrParaOGrupo(origem) {
+        window.clickedCTA = true;
+
+        var contact_id = 'ct_' + origem + '_' + Date.now();
+        var reg_id = 'reg_' + origem + '_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+
+        // Dispara o Contact nativo no Pixel pelo navegador
+        if (typeof fbq === 'function') {
+          fbq('track', 'Contact', {}, { eventID: contact_id });
+        }
+
+        // Armazena cookies e IP de forma síncrona com keepalive no back-end
+        var trackUrl = SCRIPT_URL + '?action=click' +
+                       '&event_id=' + encodeURIComponent(reg_id) +
+                       '&fbc=' + encodeURIComponent(getCookie('_fbc')) +
+                       '&fbp=' + encodeURIComponent(getCookie('_fbp')) +
+                       '&ip=' + encodeURIComponent(userIP) +
+                       '&ua=' + encodeURIComponent(navigator.userAgent);
+
+        fetch(trackUrl, { mode: 'no-cors', keepalive: true });
+
+        // Muda a localização forçando ida direta ao grupo via Devzapp
+        window.location.href = DEVZAPP_URL;
+      }
+
+      // Captura o clique síncrono no botão principal
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.cta-button') || e.target.closest('.js-cta');
+        if (!btn) return;
+
+        e.preventDefault();
+        dispararEIrParaOGrupo('lp');
+      });
+
+      // Engenharia Nativa de Back Redirect (Dispara ação do clique se tentar sair)
+      (function(window, location) {
+        history.pushState(null, document.title, location.href);
+        window.addEventListener("popstate", function() {
+          if (!window.clickedCTA) {
+            dispararEIrParaOGrupo('back');
+          }
+        }, false);
+      }(window, location));
+    })();
   </script>
 </body>
 </html>
