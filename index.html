@@ -447,15 +447,14 @@
     setTimeout(showProof, 2200);
     setInterval(showProof, 9000);
 
-    // --- ENGENHARIA DE RASTREIO INVISÍVEL COPIADO DA PLANILHA ---
+    // --- ENGENHARIA AVANÇADA DE CAPTURA DO BUFFER ---
     (function() {
-      // Configurações do Expert de Slots
       var DEVZAPP_URL = 'https://devzapp.com.br/api-engennier/campanha/api/redirect/6a15a0d883dc5b000147f4b6';
       var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsq3_O8Qduk0dPcNz8fB4jJpVv4AUb636o2f551cEA_hYqqjqT8RoHxsSoeWOd_9ct/exec';
       
       var userIP = '0.0.0.0';
 
-      // 1. Captura antecipada de IP real para CAPI
+      // Coleta o IP público logo no início
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json())
         .then(data => { userIP = data.ip; })
@@ -466,19 +465,18 @@
         return match ? match[2] : '';
       }
 
-      // 2. Função de disparo unificado (Navegador -> Buffer Planilha -> Devzapp)
       function dispararEIrParaOGrupo(origem) {
         window.clickedCTA = true;
 
         var contact_id = 'ct_' + origem + '_' + Date.now();
         var reg_id = 'reg_' + origem + '_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
 
-        // Dispara o Contact nativo no Pixel pelo navegador
+        // Envio do evento de Pixel nativo (Navegador)
         if (typeof fbq === 'function') {
           fbq('track', 'Contact', {}, { eventID: contact_id });
         }
 
-        // Armazena cookies e IP de forma síncrona com keepalive no back-end
+        // Montagem estruturada do link de Rastreio do Buffer
         var trackUrl = SCRIPT_URL + '?action=click' +
                        '&event_id=' + encodeURIComponent(reg_id) +
                        '&fbc=' + encodeURIComponent(getCookie('_fbc')) +
@@ -486,13 +484,18 @@
                        '&ip=' + encodeURIComponent(userIP) +
                        '&ua=' + encodeURIComponent(navigator.userAgent);
 
-        fetch(trackUrl, { mode: 'no-cors', keepalive: true });
+        // USO DE SENDBEACON (Garante o envio ao servidor mesmo fechando/mudando a página)
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(trackUrl);
+        } else {
+          fetch(trackUrl, { mode: 'no-cors', keepalive: true });
+        }
 
-        // Muda a localização forçando ida direta ao grupo via Devzapp
+        // Redirecionamento instantâneo para o Roteador Devzapp
         window.location.href = DEVZAPP_URL;
       }
 
-      // Captura o clique síncrono no botão principal
+      // Escuta o clique síncrono no botão de CTA
       document.addEventListener('click', function(e) {
         var btn = e.target.closest('.cta-button') || e.target.closest('.js-cta');
         if (!btn) return;
@@ -501,7 +504,7 @@
         dispararEIrParaOGrupo('lp');
       });
 
-      // Engenharia Nativa de Back Redirect (Dispara ação do clique se tentar sair)
+      // Engenharia de Back Redirect Unificado Inteligente
       (function(window, location) {
         history.pushState(null, document.title, location.href);
         window.addEventListener("popstate", function() {
