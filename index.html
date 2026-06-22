@@ -352,7 +352,7 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1663099311618578&ev=PageView&noscript=1"
   /></noscript>
-  </head>
+</head>
 <body>
   <div class="top-strip" aria-hidden="true">
     <div class="top-strip__track">
@@ -421,11 +421,11 @@
 
     // --- PROVA SOCIAL DINÂMICA ---
     const proofs = [
-      ['Amanda', 'entrou para o grupo', 'há 5 minutos'],
-      ['Lucas', 'garantiu o acesso gratuito', 'há 8 minutos'],
+      ['Amanda', 'entrou para o grupo', 'há 5 minutes'],
+      ['Lucas', 'garantiu o acesso gratuito', 'há 8 minutes'],
       ['Rafael', 'acabou de entrar no grupo', 'agora há pouco'],
-      ['Camila', 'garantiu a vaga no grupo', 'há 12 minutos'],
-      ['Bruno', 'entrou para acompanhar os jogos', 'há 3 minutos']
+      ['Camila', 'garantiu a vaga no grupo', 'há 12 minutes'],
+      ['Bruno', 'entrou para acompanhar os jogos', 'há 3 minutes']
     ];
 
     const proofBox = document.getElementById('socialProof');
@@ -447,7 +447,7 @@
     setTimeout(showProof, 2200);
     setInterval(showProof, 9000);
 
-// --- ENGENHARIA AVANÇADA DE CAPTURA DO BUFFER ---
+    // --- ENGENHARIA DE RASTREIO INVISÍVEL ATUALIZADA (CORREÇÃO DO BLOB) ---
     (function() {
       var DEVZAPP_URL = 'https://devzapp.com.br/api-engennier/campanha/api/redirect/6a15a0d883dc5b000147f4b6';
       var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsq3_O8Qduk0dPcNz8fB4jJpVv4AUb636o2f551cEA_hYqqjqT8RoHxsSoeWOd_9ct/exec';
@@ -476,7 +476,7 @@
           fbq('track', 'Contact', {}, { eventID: contact_id });
         }
 
-        // CORREÇÃO ESTRUTURAL: Transforma os parâmetros em FormData para o sendBeacon POST funcionar no Google
+        // Montagem estruturada do link de Rastreio do Buffer
         var trackUrl = SCRIPT_URL + '?action=click' +
                        '&event_id=' + encodeURIComponent(reg_id) +
                        '&fbc=' + encodeURIComponent(getCookie('_fbc')) +
@@ -484,9 +484,11 @@
                        '&ip=' + encodeURIComponent(userIP) +
                        '&ua=' + encodeURIComponent(navigator.userAgent);
 
-        // USO DE SENDBEACON COMPATÍVEL COM GOOGLE SHEETS
+        // CONFIGURAÇÃO CORRETA E COMPATÍVEL DO SENDBEACON PARA O GOOGLE APPS SCRIPT
         if (navigator.sendBeacon) {
-          navigator.sendBeacon(trackUrl, new Blob Aragao || []); // Envia um blob vazio forçando a leitura dos parâmetros de URL pelo doPost do Google
+          // Passamos um Blob limpo do tipo text/plain para forçar o Google a ler a URL via parâmetros
+          var blob = new Blob([], { type: 'text/plain' });
+          navigator.sendBeacon(trackUrl, blob);
         } else {
           fetch(trackUrl, { method: 'POST', mode: 'no-cors', keepalive: true });
         }
