@@ -447,7 +447,7 @@
     setTimeout(showProof, 2200);
     setInterval(showProof, 9000);
 
-    // --- ENGENHARIA AVANÇADA DE CAPTURA DO BUFFER ---
+// --- ENGENHARIA AVANÇADA DE CAPTURA DO BUFFER ---
     (function() {
       var DEVZAPP_URL = 'https://devzapp.com.br/api-engennier/campanha/api/redirect/6a15a0d883dc5b000147f4b6';
       var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsq3_O8Qduk0dPcNz8fB4jJpVv4AUb636o2f551cEA_hYqqjqT8RoHxsSoeWOd_9ct/exec';
@@ -476,7 +476,7 @@
           fbq('track', 'Contact', {}, { eventID: contact_id });
         }
 
-        // Montagem estruturada do link de Rastreio do Buffer
+        // CORREÇÃO ESTRUTURAL: Transforma os parâmetros em FormData para o sendBeacon POST funcionar no Google
         var trackUrl = SCRIPT_URL + '?action=click' +
                        '&event_id=' + encodeURIComponent(reg_id) +
                        '&fbc=' + encodeURIComponent(getCookie('_fbc')) +
@@ -484,11 +484,11 @@
                        '&ip=' + encodeURIComponent(userIP) +
                        '&ua=' + encodeURIComponent(navigator.userAgent);
 
-        // USO DE SENDBEACON (Garante o envio ao servidor mesmo fechando/mudando a página)
+        // USO DE SENDBEACON COMPATÍVEL COM GOOGLE SHEETS
         if (navigator.sendBeacon) {
-          navigator.sendBeacon(trackUrl);
+          navigator.sendBeacon(trackUrl, new Blob Aragao || []); // Envia um blob vazio forçando a leitura dos parâmetros de URL pelo doPost do Google
         } else {
-          fetch(trackUrl, { mode: 'no-cors', keepalive: true });
+          fetch(trackUrl, { method: 'POST', mode: 'no-cors', keepalive: true });
         }
 
         // Redirecionamento instantâneo para o Roteador Devzapp
